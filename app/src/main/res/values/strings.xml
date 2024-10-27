@@ -3,6 +3,9 @@
     <string name="title_home">Home</string>
     <string name="title_upcoming">Upcoming</string>
     <string name="title_finished">Finished</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_setting">Setting</string>
+    <string name="save_favorite">Save Favorite ?</string>
     <string name="judul_event">Your text here</string>
     <string name="title_name">Nama acara</string>
     <string name="detail_name">Your text here</string>
@@ -21,4 +24,6 @@
     <string name="title_image">Gambar</string>
     <string name="event_subtitle">Event Subtitle</string>
     <string name="quota_left">%d tersisa</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

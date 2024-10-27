@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager // Import LinearLayoutManager
 import com.dicoding.aplikasidicodingevent.databinding.FragmentFinishedBinding
+import com.dicoding.aplikasidicodingevent.ui.ViewModelFactory
 import com.dicoding.aplikasidicodingevent.ui.detail.DetailActivity
 import com.dicoding.aplikasidicodingevent.viewmodel.EventAdapter
 import com.dicoding.aplikasidicodingevent.viewmodel.MainViewModel
@@ -33,6 +34,10 @@ class FinishedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Menggunakan ViewModelFactory untuk inisialisasi MainViewModel
+        val factory = ViewModelFactory.getInstance(requireContext())
+        viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
+
         initializeRecyclerView()
 
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
@@ -50,6 +55,10 @@ class FinishedFragment : Fragment() {
                 Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG).show()
             }
         }
+
+        // Panggil fetchEvents dengan parameter yang sesuai
+        viewModel.fetchEvents(1)
+        viewModel.fetchEvents(0)
     }
 
     private fun initializeRecyclerView() {

@@ -4,16 +4,19 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dicoding.aplikasidicodingevent.data.response.EventResponse
-import com.dicoding.aplikasidicodingevent.data.response.ListEventsItem
-import com.dicoding.aplikasidicodingevent.data.retrofit.ApiConfig
+import com.dicoding.aplikasidicodingevent.data.remote.response.EventResponse
+import com.dicoding.aplikasidicodingevent.data.remote.response.ListEventsItem
+import com.dicoding.aplikasidicodingevent.data.remote.retrofit.ApiConfig
+import com.dicoding.aplikasidicodingevent.data.repository.EventRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
-class MainViewModel : ViewModel() {
+class MainViewModel(private val eventRepository: EventRepository) : ViewModel() {
+
+    fun getHeadlineEvent() = eventRepository.getHeadlineEvent()
 
     private val _activeEvents = MutableLiveData<List<ListEventsItem>>()
     val activeEvents: LiveData<List<ListEventsItem>> = _activeEvents

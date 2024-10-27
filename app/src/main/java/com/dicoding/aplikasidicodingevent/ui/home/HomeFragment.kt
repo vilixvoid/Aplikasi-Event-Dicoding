@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.aplikasidicodingevent.databinding.FragmentHomeBinding
+import com.dicoding.aplikasidicodingevent.ui.ViewModelFactory
 import com.dicoding.aplikasidicodingevent.ui.detail.DetailActivity
 import com.dicoding.aplikasidicodingevent.viewmodel.EventAdapter
 import com.dicoding.aplikasidicodingevent.viewmodel.MainViewModel
@@ -34,11 +35,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        // Menggunakan ViewModelFactory untuk inisialisasi MainViewModel
+        val factory = ViewModelFactory.getInstance(requireContext())
+        viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
         initializeRecyclerViews()
-
-//        configureSearchView()
 
         viewModel.activeEvents.observe(viewLifecycleOwner) { events ->
             ongoingEventAdapter.submitList(events)
@@ -62,6 +63,7 @@ class HomeFragment : Fragment() {
             }
         }
 
+        // Panggil fetchEvents dengan parameter yang sesuai
         viewModel.fetchEvents(1)
         viewModel.fetchEvents(0)
     }
@@ -87,21 +89,6 @@ class HomeFragment : Fragment() {
         binding.recyclerViewFinishedEvents.adapter = completedEventAdapter
     }
 
-//    private fun configureSearchView() {
-//        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                query?.let {
-//                    viewModel.searchEvents(it)
-//                }
-//                return false
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                return false
-//            }
-//        })
-//    }
-
     private fun displayLoadingIndicator(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
@@ -111,5 +98,4 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 }
-
 

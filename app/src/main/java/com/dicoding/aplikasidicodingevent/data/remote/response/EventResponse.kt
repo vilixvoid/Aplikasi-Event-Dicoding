@@ -1,4 +1,4 @@
-package com.dicoding.aplikasidicodingevent.data.response
+package com.dicoding.aplikasidicodingevent.data.remote.response
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

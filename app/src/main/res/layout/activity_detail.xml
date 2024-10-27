@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
@@ -32,11 +31,28 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
 
+        <ImageView
+            android:id="@+id/iv_favorite"
+            android:layout_width="60dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/border"
+            android:contentDescription="@string/save_favorite"
+            android:src="@drawable/ic_favorite_border_24"
+            app:layout_constraintBottom_toTopOf="@+id/detail_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/item_Image"
+            app:layout_constraintTop_toTopOf="@+id/item_Image" />
+
         <TextView
             android:id="@+id/detail_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:layout_marginTop="88dp"
             android:padding="8dp"
             android:text="@string/title_name"
             android:textSize="16sp"
